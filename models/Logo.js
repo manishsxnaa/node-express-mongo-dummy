@@ -1,20 +1,17 @@
 const mongoose = require("mongoose");
 
-const UserSchema = mongoose.Schema({
+const LogoSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-    email: {
+    domain: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
-    password: {
+    logo: {
         type: String,
-        required: true,
-        max: 1024,
-        min: 6
+        required: true
     },
     created: {
         type: Date,
@@ -22,4 +19,5 @@ const UserSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Users",UserSchema);
+
+module.exports = mongoose.model("Logos",LogoSchema);

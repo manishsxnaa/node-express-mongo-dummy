@@ -5,8 +5,12 @@ require("dotenv/config");
 
 //Import Posts
 const postsRoutes = require('./routes/posts');
+//Import Notes
+const notesRoutes = require('./routes/notes');
 //Import Users
 const authRoutes = require('./routes/auth');
+//Import Logos
+const logoRoutes = require('./routes/logo');
 
 // ** Middleware ** 
 // Body Parser Middleware
@@ -15,14 +19,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 // Post Route
-app.use('/posts',postsRoutes);
+app.use('/api/posts',postsRoutes);
+// Post Route
+app.use('/api/notes',notesRoutes);
 // User Route
-app.use('/users',authRoutes);
+app.use('/api/auth',authRoutes);
+// company Route
+app.use('/api/logos',logoRoutes);
 
 // app.use('/posts',() => {
 //     console.log("Middleware running..");
